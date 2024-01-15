@@ -125,7 +125,7 @@ export default function Home() {
       <Layout>
         <div className="mx-auto flex flex-col gap-4">
           <h1 className="text-2xl font-bold leading-[1.1] tracking-tighter text-center">
-            Chat With Your Docs
+            Chat With Your Technical Docs
           </h1>
           <main className={styles.main}>
             <div className={styles.cloud}>
@@ -195,7 +195,9 @@ export default function Home() {
                                       {doc.pageContent}
                                     </ReactMarkdown>
                                     <p className="mt-2">
-                                      <b>Source:</b> {doc.metadata.source}
+                                      <b>Source:</b> {doc.metadata["pdf.info.Title"]}
+                                      <br></br>
+                                      <b>Page:</b> {doc.metadata["loc.pageNumber"]}
                                     </p>
                                   </AccordionContent>
                                 </AccordionItem>
@@ -224,7 +226,7 @@ export default function Home() {
                     placeholder={
                       loading
                         ? 'Waiting for response...'
-                        : 'What is this legal case about?'
+                        : 'I am an expert in containers, CI/CD, devops and Red Hat OpenShift. AMA'
                     }
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
@@ -262,7 +264,7 @@ export default function Home() {
         </div>
         <footer className="m-auto p-4">
           <a href="https://twitter.com/mayowaoshin">
-            Powered by LangChainAI. Demo built by Mayo (Twitter: @mayowaoshin).
+            Powered by LangChainAI
           </a>
         </footer>
       </Layout>
