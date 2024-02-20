@@ -1,7 +1,11 @@
-FROM --platform=linux/amd64 node:latest
+FROM node:16-alpine
 
 # Set working directory
 WORKDIR /app
+
+# Change ownership of npm cache folder
+RUN mkdir -p /.npm \
+    && chown -R 1001010000:0 /.npm
 
 # Install dependencies
 COPY package.json ./
