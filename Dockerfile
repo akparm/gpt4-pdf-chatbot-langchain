@@ -1,11 +1,15 @@
+# Image
 FROM node:16-alpine
 
 # Set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# Change ownership of npm cache folder
-RUN mkdir -p /.npm \
-    && chown -R 1001010000:0 /.npm
+# Set environment variable for npm cache directory
+ENV NPM_CONFIG_CACHE=/usr/src/app/.npm
+
+# Create npm cache directory
+RUN mkdir -p $NPM_CONFIG_CACHE \
+    && chown -R node:node $NPM_CONFIG_CACHE
 
 # Install dependencies
 COPY package.json ./
@@ -22,4 +26,3 @@ EXPOSE 3000
 
 # Run the server
 CMD ["npm", "start"]
-
